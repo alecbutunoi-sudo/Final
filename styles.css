@@ -1,5 +1,5 @@
 /* ==========================================================================
-   GRIDIRON EDGE - WEEK 6 (2026) GLOBAL STYLESHEET
+   GRIDIRON EDGE - WEEK 6 (2026 SEASON) GLOBAL STYLESHEET
    ========================================================================== */
 :root {
     --bg-dark: #0f172a;
@@ -15,7 +15,7 @@
     --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Light / Field Mode Switch */
+/* Light Mode Toggle */
 body.light-theme {
     --bg-dark: #f1f5f9;
     --bg-card: #ffffff;
@@ -41,9 +41,6 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* ==========================================================================
-   HEADER & NAVIGATION MENU (REQUIRED ON ALL 3 PAGES)
-   ========================================================================== */
 header {
     background: linear-gradient(135deg, #0284c7 0%, #0f172a 100%);
     border-bottom: 3px solid var(--accent-gold);
@@ -121,9 +118,6 @@ nav a.active {
     color: #0f172a;
 }
 
-/* ==========================================================================
-   MAIN CONTAINERS & CARDS
-   ========================================================================== */
 main {
     max-width: 920px;
     width: 92%;
@@ -162,9 +156,6 @@ main {
     border: 2px solid var(--border-color);
 }
 
-/* ==========================================================================
-   FORM CONTROLS & INTERACTIVE ELEMENTS
-   ========================================================================== */
 .controls-row {
     display: flex;
     gap: 10px;
@@ -214,9 +205,6 @@ input[type="text"]:focus, select:focus {
     background-color: #facc15;
 }
 
-/* ==========================================================================
-   RANKINGS & TABLES WITH WEEK 6 BYE BADGES
-   ========================================================================== */
 .rankings-table {
     width: 100%;
     border-collapse: collapse;
@@ -269,9 +257,6 @@ input[type="text"]:focus, select:focus {
     color: var(--text-muted);
 }
 
-/* ==========================================================================
-   TRADE CALCULATOR WIDGET
-   ========================================================================== */
 .trade-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
