@@ -1,5 +1,5 @@
 /* ==========================================================================
-   GRIDIRON EDGE - GLOBAL JAVASCRIPT ENGINE
+   GRIDIRON EDGE - WEEK 6 (2026) JAVASCRIPT ENGINE
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Active Page Highlighting in Menu
+    // 2. Navigation Active State Highlighting
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     const navLinks = document.querySelectorAll('nav a');
     navLinks.forEach(link => {
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 3. Initialize Specific Page Features
+    // 3. Initialize Specific Page Logic
     if (document.getElementById('playerTableBody')) {
         initRankingsPage();
     }
@@ -36,19 +36,26 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ==========================================================================
-   PAGE 1: RANKINGS & LIVE SEARCH INTERACTIVITY
+   ACTIVE WEEK 6 (OCTOBER 2026) PLAYER DATASET & MATCHUPS
+   Note: Teams on Bye in Week 6: CIN, DET, MIA, MIN
    ========================================================================== */
-const PLAYERS_DATA = [
-    { rank: 1, name: "Christian McCaffrey", pos: "RB", team: "SF", pprPts: 22.4, stdPts: 18.1 },
-    { rank: 2, name: "CeeDee Lamb", pos: "WR", team: "DAL", pprPts: 21.8, stdPts: 15.2 },
-    { rank: 3, name: "Tyreek Hill", pos: "WR", team: "MIA", pprPts: 21.2, stdPts: 15.9 },
-    { rank: 4, name: "Breece Hall", pos: "RB", team: "NYJ", pprPts: 19.5, stdPts: 14.8 },
-    { rank: 5, name: "Ja'Marr Chase", pos: "WR", team: "CIN", pprPts: 19.1, stdPts: 13.9 },
-    { rank: 6, name: "Bijan Robinson", pos: "RB", team: "ATL", pprPts: 18.7, stdPts: 14.1 },
-    { rank: 7, name: "Travis Kelce", pos: "TE", team: "KC", pprPts: 16.4, stdPts: 11.2 },
-    { rank: 8, name: "Josh Allen", pos: "QB", team: "BUF", pprPts: 24.2, stdPts: 24.2 },
-    { rank: 9, name: "Patrick Mahomes", pos: "QB", team: "KC", pprPts: 22.1, stdPts: 22.1 },
-    { rank: 10, name: "Sam LaPorta", pos: "TE", team: "DET", pprPts: 14.8, stdPts: 10.1 }
+const WEEK6_PLAYERS_2026 = [
+    { rank: 1, name: "Bijan Robinson", pos: "RB", team: "ATL", matchup: "vs CHI", pprPts: 22.8, stdPts: 18.2, status: "Active" },
+    { rank: 2, name: "Josh Allen", pos: "QB", team: "BUF", matchup: "@ LV", pprPts: 25.4, stdPts: 25.4, status: "Active" },
+    { rank: 3, name: "CeeDee Lamb", pos: "WR", team: "DAL", matchup: "@ GB", pprPts: 21.6, stdPts: 15.1, status: "Active" },
+    { rank: 4, name: "Christian McCaffrey", pos: "RB", team: "SF", matchup: "vs WAS", pprPts: 20.9, stdPts: 16.4, status: "Active" },
+    { rank: 5, name: "Puka Nacua", pos: "WR", team: "LAR", matchup: "vs ARI", pprPts: 20.4, stdPts: 14.2, status: "Active" },
+    { rank: 6, name: "Kenneth Walker III", pos: "RB", team: "SEA", matchup: "@ DEN", pprPts: 19.8, stdPts: 16.0, status: "Active" },
+    { rank: 7, name: "Jaxon Smith-Njigba", pos: "WR", team: "SEA", matchup: "@ DEN", pprPts: 19.1, stdPts: 13.5, status: "Active" },
+    { rank: 8, name: "Derrick Henry", pos: "RB", team: "BAL", matchup: "@ CLE", pprPts: 18.9, stdPts: 17.2, status: "Active" },
+    { rank: 9, name: "Patrick Mahomes", pos: "QB", team: "KC", matchup: "vs LAC", pprPts: 23.5, stdPts: 23.5, status: "Active" },
+    { rank: 10, name: "Travis Kelce", pos: "TE", team: "KC", matchup: "vs LAC", pprPts: 15.8, stdPts: 10.9, status: "Active" },
+    
+    // BYE WEEK PLAYERS (Week 6 2026: CIN, DET, MIA, MIN)
+    { rank: "--", name: "Ja'Marr Chase", pos: "WR", team: "CIN", matchup: "BYE WEEK", pprPts: 0.0, stdPts: 0.0, status: "BYE" },
+    { rank: "--", name: "Jahmyr Gibbs", pos: "RB", team: "DET", matchup: "BYE WEEK", pprPts: 0.0, stdPts: 0.0, status: "BYE" },
+    { rank: "--", name: "Justin Jefferson", pos: "WR", team: "MIN", matchup: "BYE WEEK", pprPts: 0.0, stdPts: 0.0, status: "BYE" },
+    { rank: "--", name: "Tyreek Hill", pos: "WR", team: "MIA", matchup: "BYE WEEK", pprPts: 0.0, stdPts: 0.0, status: "BYE" }
 ];
 
 let currentScoringMode = 'ppr';
@@ -87,7 +94,7 @@ function renderRankings() {
     
     if (!tableBody) return;
 
-    let filtered = PLAYERS_DATA.filter(p => {
+    let filtered = WEEK6_PLAYERS_2026.filter(p => {
         const matchesName = p.name.toLowerCase().includes(searchVal) || p.team.toLowerCase().includes(searchVal);
         const matchesPos = currentPosFilter === 'ALL' || p.pos === currentPosFilter;
         return matchesName && matchesPos;
@@ -102,20 +109,25 @@ function renderRankings() {
 
     filtered.forEach((p, idx) => {
         const pts = currentScoringMode === 'ppr' ? p.pprPts : p.stdPts;
+        const isBye = p.status === 'BYE';
         const row = document.createElement('tr');
+        
         row.innerHTML = `
-            <td><strong>#${idx + 1}</strong></td>
-            <td><strong>${p.name}</strong></td>
+            <td><strong>${isBye ? 'BYE' : '#' + (idx + 1)}</strong></td>
+            <td>
+                <strong>${p.name}</strong> 
+                ${isBye ? '<span class="bye-badge">WEEK 6 BYE</span>' : ''}
+            </td>
             <td><span class="pos-badge pos-${p.pos}">${p.pos}</span></td>
-            <td>${p.team}</td>
-            <td><strong>${pts.toFixed(1)} PPG</strong></td>
+            <td>${p.team} <span class="matchup-text">(${p.matchup})</span></td>
+            <td><strong>${isBye ? '0.0 PPG' : pts.toFixed(1) + ' PPG'}</strong></td>
         `;
         tableBody.appendChild(row);
     });
 }
 
 /* ==========================================================================
-   PAGE 2: DRAFT KIT SHOW/HIDE INSIGHTS INTERACTIVITY
+   PAGE 2: DRAFT KIT / WAIVER WIRE SLEEPER INTERACTIVITY
    ========================================================================== */
 function initDraftPage() {
     const toggleBtn = document.getElementById('sleeperToggleBtn');
@@ -125,10 +137,10 @@ function initDraftPage() {
         toggleBtn.addEventListener('click', () => {
             if (sleeperBox.style.display === 'none' || sleeperBox.style.display === '') {
                 sleeperBox.style.display = 'block';
-                toggleBtn.textContent = '🙈 Hide Secret Sleeper Picks';
+                toggleBtn.textContent = '🙈 Hide Week 6 Waiver Target Notes';
             } else {
                 sleeperBox.style.display = 'none';
-                toggleBtn.textContent = '💡 Show Secret Sleeper Picks';
+                toggleBtn.textContent = '💡 Reveal Week 6 Waiver Wire Sleepers';
             }
         });
     }
@@ -148,7 +160,7 @@ function initTradeAnalyzerPage() {
             const teamBVal = parseFloat(document.getElementById('teamBVal').value) || 0;
 
             if (teamAVal <= 0 || teamBVal <= 0) {
-                alert("⚠️ Please select or enter valid player values for both teams!");
+                alert("⚠️ Please select valid players for both sides of the trade!");
                 return;
             }
 
@@ -161,12 +173,12 @@ function initTradeAnalyzerPage() {
             }
 
             let message = '';
-            if (diff <= 3) {
-                message = "⚖️ EXCELLENT TRADE! This deal is perfectly balanced for both fantasy managers.";
+            if (diff <= 2.5) {
+                message = "⚖️ PERFECTLY BALANCED TRADE! Fair deal for both Week 6 managers.";
             } else if (teamAVal > teamBVal) {
-                message = `🔥 TEAM A WINS THE TRADE! Team A gains +${diff.toFixed(1)} value edge.`;
+                message = `🔥 TEAM A WINS THE DEAL! Team A gains +${diff.toFixed(1)} Week 6 value edge.`;
             } else {
-                message = `🔥 TEAM B WINS THE TRADE! Team B gains +${diff.toFixed(1)} value edge.`;
+                message = `🔥 TEAM B WINS THE DEAL! Team B gains +${diff.toFixed(1)} Week 6 value edge.`;
             }
 
             if (resultToast) {
@@ -174,7 +186,7 @@ function initTradeAnalyzerPage() {
                 resultToast.style.display = 'block';
             }
 
-            alert(`Trade Analyzed!\n${message}`);
+            alert(`Week 6 Trade Analysis Complete!\n${message}`);
         });
     }
 }
