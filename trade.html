@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gridiron Edge - Trade Analyzer</title>
+    <title>Gridiron Edge - Week 6 Trade Analyzer</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- Required Consistent Navigation Menu -->
+    <!-- Required Navigation Menu -->
     <header>
         <button id="themeToggleBtn" class="theme-btn">☀️ Light Mode</button>
         <h1>Gridiron Edge Fantasy</h1>
+        <span class="week-badge">🏈 Active: Week 6 (2026 Season)</span>
         <nav>
-            <a href="index.html">📊 Rankings</a>
-            <a href="draft.html">📋 Draft Kit</a>
+            <a href="index.html">📊 Week 6 Rankings</a>
+            <a href="draft.html">📋 Waiver Wire & Kit</a>
             <a href="trade.html">🔄 Trade Analyzer</a>
         </nav>
     </header>
@@ -22,45 +23,45 @@
     <main>
         <!-- Trade Calculator Card -->
         <section class="card" id="tradeForm">
-            <h2>Interactive Fantasy Trade Calculator</h2>
-            <p>Evaluate proposed trades instantly before sending or accepting offers in your league.</p>
+            <h2>Week 6 Active Trade Analyzer</h2>
+            <p>Evaluate trades using active Week 6 rest-of-season valuations before submitting proposals to league managers.</p>
 
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Touchdown_--_Texas_High_School_vs_Highland_Park_High_School_first-round_playoffs.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original" alt="American Football Action" class="hero-img">
+            <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=800&auto=format&fit=crop&q=80" alt="Football Game Strategy" class="hero-img">
 
             <div class="trade-grid">
                 <!-- Team A Selection -->
                 <div class="trade-team-box">
-                    <h3>🏈 Team A Gives:</h3>
+                    <h3>🏈 Team A Sends:</h3>
                     <select id="teamAVal" style="width: 100%; margin-top: 8px;">
-                        <option value="22.4">Christian McCaffrey (Val: 22.4)</option>
-                        <option value="21.8">CeeDee Lamb (Val: 21.8)</option>
-                        <option value="19.5">Breece Hall (Val: 19.5)</option>
-                        <option value="16.4">Travis Kelce (Val: 16.4)</option>
-                        <option value="14.8">Sam LaPorta (Val: 14.8)</option>
+                        <option value="22.8">Bijan Robinson (Val: 22.8)</option>
+                        <option value="25.4">Josh Allen (Val: 25.4)</option>
+                        <option value="21.6">CeeDee Lamb (Val: 21.6)</option>
+                        <option value="20.9">Christian McCaffrey (Val: 20.9)</option>
+                        <option value="15.8">Travis Kelce (Val: 15.8)</option>
                     </select>
                 </div>
 
                 <!-- Team B Selection -->
                 <div class="trade-team-box">
-                    <h3>🏈 Team B Gives:</h3>
+                    <h3>🏈 Team B Sends:</h3>
                     <select id="teamBVal" style="width: 100%; margin-top: 8px;">
-                        <option value="21.2">Tyreek Hill (Val: 21.2)</option>
-                        <option value="19.1">Ja'Marr Chase (Val: 19.1)</option>
-                        <option value="18.7">Bijan Robinson (Val: 18.7)</option>
-                        <option value="24.2">Josh Allen (Val: 24.2)</option>
-                        <option value="11.2">Bench Depth Package (Val: 11.2)</option>
+                        <option value="20.4">Puka Nacua (Val: 20.4)</option>
+                        <option value="19.8">Kenneth Walker III (Val: 19.8)</option>
+                        <option value="19.1">Jaxon Smith-Njigba (Val: 19.1)</option>
+                        <option value="23.5">Patrick Mahomes (Val: 23.5)</option>
+                        <option value="18.9">Derrick Henry (Val: 18.9)</option>
                     </select>
                 </div>
             </div>
 
             <!-- Dynamic Fairness Meter -->
-            <label style="font-weight: bold; color: var(--text-light);">Trade Balance Ratio:</label>
+            <label style="font-weight: bold; color: var(--text-light);">Trade Balance Gauge:</label>
             <div class="meter-container">
-                <div id="tradeMeterBar" class="meter-bar" style="width: 50%;"></div>
+                <div id="tradeMeterBar" class="meter-bar"></div>
             </div>
 
             <div style="text-align: center; margin-top: 15px;">
-                <button id="analyzeTradeBtn" class="btn btn-gold" style="font-size: 1.1rem; padding: 12px 30px;">⚡ Analyze Trade Fairness</button>
+                <button id="analyzeTradeBtn" class="btn btn-gold" style="font-size: 1.1rem; padding: 12px 30px;">⚡ Analyze Week 6 Trade Fairness</button>
             </div>
 
             <!-- Dynamic Results Banner -->
@@ -68,15 +69,14 @@
             </div>
         </section>
 
-        <!-- Golden Rules of Trading Card -->
+        <!-- Informational Card -->
         <section class="card">
-            <h2>The 3 Golden Rules of Fantasy Trading</h2>
-            <p>Maximize value without hurting your starter lineup structure.</p>
+            <h2>Mid-Season Trading Advice</h2>
+            <p>Strategies for taking advantage of Week 6 bye-week desperation:</p>
 
             <ul class="styled-list">
-                <li><strong>1. Upgrade Starters:</strong> Trading two bench players for one elite starter is always a win in shallower leagues.</li>
-                <li><strong>2. Target Bye-Week Panic:</strong> Trade for top players when rival managers need immediate wins during bye weeks.</li>
-                <li><strong>3. Sell High on Touchdown Flukes:</strong> Trade away players relying solely on unsustainable touchdown luck.</li>
+                <li><strong>Target Managers with Bye-Week Panic:</strong> Managers holding Ja'Marr Chase or Justin Jefferson might sell low if they are 1-4 or 2-3 and need a Week 6 win.</li>
+                <li><strong>Package 2-for-1 Deals:</strong> Trade depth pieces for single high-ceiling starters before fantasy trade deadlines approach.</li>
             </ul>
         </section>
     </main>
