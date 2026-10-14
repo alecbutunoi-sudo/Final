@@ -1,5 +1,5 @@
 /* ==========================================================================
-   GRIDIRON EDGE - GLOBAL STYLESHEET
+   GRIDIRON EDGE - WEEK 6 (2026) GLOBAL STYLESHEET
    ========================================================================== */
 :root {
     --bg-dark: #0f172a;
@@ -15,7 +15,7 @@
     --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Light / High-Contrast Theme Toggle */
+/* Light / Field Mode Switch */
 body.light-theme {
     --bg-dark: #f1f5f9;
     --bg-card: #ffffff;
@@ -57,6 +57,18 @@ header h1 {
     font-weight: 800;
     letter-spacing: 1.5px;
     color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.week-badge {
+    display: inline-block;
+    background-color: var(--accent-gold);
+    color: #0f172a;
+    font-weight: 800;
+    font-size: 0.8rem;
+    padding: 3px 10px;
+    border-radius: 12px;
+    text-transform: uppercase;
     margin-bottom: 12px;
 }
 
@@ -113,9 +125,9 @@ nav a.active {
    MAIN CONTAINERS & CARDS
    ========================================================================== */
 main {
-    max-width: 900px;
+    max-width: 920px;
     width: 92%;
-    margin: 30px auto;
+    margin: 25px auto;
     display: flex;
     flex-direction: column;
     gap: 25px;
@@ -141,9 +153,6 @@ main {
     margin-bottom: 15px;
 }
 
-/* ==========================================================================
-   MEDIA & IMAGES
-   ========================================================================== */
 .hero-img {
     width: 100%;
     max-height: 320px;
@@ -154,7 +163,7 @@ main {
 }
 
 /* ==========================================================================
-   FORM CONTROLS & INTERACTIVE CONTROLS
+   FORM CONTROLS & INTERACTIVE ELEMENTS
    ========================================================================== */
 .controls-row {
     display: flex;
@@ -206,7 +215,7 @@ input[type="text"]:focus, select:focus {
 }
 
 /* ==========================================================================
-   RANKINGS & TABLES
+   RANKINGS & TABLES WITH WEEK 6 BYE BADGES
    ========================================================================== */
 .rankings-table {
     width: 100%;
@@ -244,6 +253,21 @@ input[type="text"]:focus, select:focus {
 .pos-RB { background-color: #3b82f6; }
 .pos-WR { background-color: #10b981; }
 .pos-TE { background-color: #8b5cf6; }
+
+.bye-badge {
+    background-color: var(--accent-red);
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 6px;
+}
+
+.matchup-text {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
 
 /* ==========================================================================
    TRADE CALCULATOR WIDGET
@@ -283,14 +307,11 @@ input[type="text"]:focus, select:focus {
 
 .meter-bar {
     height: 100%;
-    width: 0%;
+    width: 50%;
     background: linear-gradient(90deg, #ef4444 0%, #10b981 100%);
     transition: width 0.4s ease;
 }
 
-/* ==========================================================================
-   LISTS & FOOTER
-   ========================================================================== */
 .styled-list {
     margin-left: 20px;
     color: var(--text-muted);
