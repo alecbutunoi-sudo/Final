@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gridiron Edge - Fantasy Football Rankings</title>
+    <title>Gridiron Edge - Week 6 Fantasy Rankings (2026)</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- Required Consistent Navigation Menu -->
+    <!-- Required Navigation Menu -->
     <header>
         <button id="themeToggleBtn" class="theme-btn">☀️ Light Mode</button>
         <h1>Gridiron Edge Fantasy</h1>
+        <span class="week-badge">🏈 Active: Week 6 (2026 Season)</span>
         <nav>
-            <a href="index.html">📊 Rankings</a>
-            <a href="draft.html">📋 Draft Kit</a>
+            <a href="index.html">📊 Week 6 Rankings</a>
+            <a href="draft.html">📋 Waiver Wire & Kit</a>
             <a href="trade.html">🔄 Trade Analyzer</a>
         </nav>
     </header>
@@ -22,14 +23,14 @@
     <main>
         <!-- Hero Card -->
         <section class="card">
-            <h2>2026 Consensus Player Rankings</h2>
-            <p>Filter, search, and toggle between PPR and Standard scoring formats to build your ultimate draft list.</p>
+            <h2>Week 6 Consensus Rankings & Matchups</h2>
+            <p>Active projections for October 2026. Note: <strong>CIN, DET, MIA, MIN</strong> are on Bye in Week 6!</p>
             
-            <img src="https://commishkit.com/wp-content/uploads/2022/08/digitaldraftboard.jpg" alt="Fantasy Football Draft Board" class="hero-img">
+            <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=800&auto=format&fit=crop&q=80" alt="NFL Game Action Stadium" class="hero-img">
 
             <!-- Interactive Search & Filter Controls -->
             <div class="controls-row">
-                <input type="text" id="playerSearchInput" placeholder="🔍 Search player or team (e.g., McCaffrey, SF)...">
+                <input type="text" id="playerSearchInput" placeholder="🔍 Search active player, team, or 'BYE'...">
                 
                 <select id="posFilterSelect">
                     <option value="ALL">All Positions</option>
@@ -48,9 +49,9 @@
                     <tr>
                         <th>Rank</th>
                         <th>Player</th>
-                        <th>Position</th>
-                        <th>Team</th>
-                        <th>Proj. PPG</th>
+                        <th>Pos</th>
+                        <th>Team & Matchup</th>
+                        <th>Week 6 Proj</th>
                     </tr>
                 </thead>
                 <tbody id="playerTableBody">
@@ -61,13 +62,13 @@
 
         <!-- Informational Card -->
         <section class="card">
-            <h2>Expert Ranking Criteria</h2>
-            <p>Our fantasy projections are computed using advanced metrics including target share, red-zone touches, and line strength.</p>
+            <h2>Week 6 Key Matchup Insights</h2>
+            <p>Matchup notes for prime-time games in Week 6 of the 2026 season:</p>
 
             <ul class="styled-list">
-                <li><strong>Target Volume:</strong> Wide receivers receiving 8+ targets per game rank highest.</li>
-                <li><strong>Workhorse RBs:</strong> Running backs securing both rushing attempts and goal-line work.</li>
-                <li><strong>Konami Code QBs:</strong> Quarterbacks with rushing touchdown upside.</li>
+                <li><strong>Bijan Robinson vs. Bears:</strong> Chicago's run defense allows 4.8 yards per carry, making Bijan the consensus #1 overall RB in Week 6.</li>
+                <li><strong>Josh Allen at Raiders:</strong> Las Vegas ranks 28th in pass defense efficiency heading into Week 6.</li>
+                <li><strong>Seattle Seahawks at Denver Broncos:</strong> High-octane Thursday Night clash between two premier defensive units.</li>
             </ul>
         </section>
     </main>
