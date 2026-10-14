@@ -1,10 +1,10 @@
 /* ==========================================================================
-   GRIDIRON EDGE - WEEK 6 (2026) JAVASCRIPT ENGINE
+   GRIDIRON EDGE - WEEK 6 (2026 SEASON) ACTIVE DATA & SCRIPT ENGINE
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. Theme Switcher Interactivity
+    // Theme Switcher
     const themeBtn = document.getElementById('themeToggleBtn');
     if (themeBtn) {
         themeBtn.addEventListener('click', () => {
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Navigation Active State Highlighting
+    // Navigation Active Highlighting
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     const navLinks = document.querySelectorAll('nav a');
     navLinks.forEach(link => {
@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 3. Initialize Specific Page Logic
     if (document.getElementById('playerTableBody')) {
         initRankingsPage();
     }
@@ -36,10 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ==========================================================================
-   ACTIVE WEEK 6 (OCTOBER 2026) PLAYER DATASET & MATCHUPS
-   Note: Teams on Bye in Week 6: CIN, DET, MIA, MIN
+   ACTIVE 2026 NFL PLAYERS - WEEK 6 PROJECTIONS & BYE WEEKS
+   Week 6 Byes: CIN, DET, MIA, MIN
    ========================================================================== */
-const WEEK6_PLAYERS_2026 = [
+const ACTIVE_2026_WEEK6_PLAYERS = [
     { rank: 1, name: "Bijan Robinson", pos: "RB", team: "ATL", matchup: "vs CHI", pprPts: 22.8, stdPts: 18.2, status: "Active" },
     { rank: 2, name: "Josh Allen", pos: "QB", team: "BUF", matchup: "@ LV", pprPts: 25.4, stdPts: 25.4, status: "Active" },
     { rank: 3, name: "CeeDee Lamb", pos: "WR", team: "DAL", matchup: "@ GB", pprPts: 21.6, stdPts: 15.1, status: "Active" },
@@ -50,12 +49,13 @@ const WEEK6_PLAYERS_2026 = [
     { rank: 8, name: "Derrick Henry", pos: "RB", team: "BAL", matchup: "@ CLE", pprPts: 18.9, stdPts: 17.2, status: "Active" },
     { rank: 9, name: "Patrick Mahomes", pos: "QB", team: "KC", matchup: "vs LAC", pprPts: 23.5, stdPts: 23.5, status: "Active" },
     { rank: 10, name: "Travis Kelce", pos: "TE", team: "KC", matchup: "vs LAC", pprPts: 15.8, stdPts: 10.9, status: "Active" },
+    { rank: 11, name: "Brock Bowers", pos: "TE", team: "LV", matchup: "vs BUF", pprPts: 19.6, stdPts: 13.1, status: "Active" },
     
-    // BYE WEEK PLAYERS (Week 6 2026: CIN, DET, MIA, MIN)
+    // WEEK 6 2026 BYE WEEK ACTIVE STARTERS (CIN, DET, MIA, MIN)
     { rank: "--", name: "Ja'Marr Chase", pos: "WR", team: "CIN", matchup: "BYE WEEK", pprPts: 0.0, stdPts: 0.0, status: "BYE" },
     { rank: "--", name: "Jahmyr Gibbs", pos: "RB", team: "DET", matchup: "BYE WEEK", pprPts: 0.0, stdPts: 0.0, status: "BYE" },
     { rank: "--", name: "Justin Jefferson", pos: "WR", team: "MIN", matchup: "BYE WEEK", pprPts: 0.0, stdPts: 0.0, status: "BYE" },
-    { rank: "--", name: "Tyreek Hill", pos: "WR", team: "MIA", matchup: "BYE WEEK", pprPts: 0.0, stdPts: 0.0, status: "BYE" }
+    { rank: "--", name: "Jaylen Waddle", pos: "WR", team: "MIA", matchup: "BYE WEEK", pprPts: 0.0, stdPts: 0.0, status: "BYE" }
 ];
 
 let currentScoringMode = 'ppr';
@@ -68,9 +68,7 @@ function initRankingsPage() {
 
     renderRankings();
 
-    if (searchInput) {
-        searchInput.addEventListener('input', () => renderRankings());
-    }
+    if (searchInput) searchInput.addEventListener('input', () => renderRankings());
 
     if (posFilterSelect) {
         posFilterSelect.addEventListener('change', (e) => {
@@ -94,7 +92,7 @@ function renderRankings() {
     
     if (!tableBody) return;
 
-    let filtered = WEEK6_PLAYERS_2026.filter(p => {
+    let filtered = ACTIVE_2026_WEEK6_PLAYERS.filter(p => {
         const matchesName = p.name.toLowerCase().includes(searchVal) || p.team.toLowerCase().includes(searchVal);
         const matchesPos = currentPosFilter === 'ALL' || p.pos === currentPosFilter;
         return matchesName && matchesPos;
@@ -126,9 +124,6 @@ function renderRankings() {
     });
 }
 
-/* ==========================================================================
-   PAGE 2: DRAFT KIT / WAIVER WIRE SLEEPER INTERACTIVITY
-   ========================================================================== */
 function initDraftPage() {
     const toggleBtn = document.getElementById('sleeperToggleBtn');
     const sleeperBox = document.getElementById('sleeperSecretBox');
@@ -146,9 +141,6 @@ function initDraftPage() {
     }
 }
 
-/* ==========================================================================
-   PAGE 3: TRADE ANALYZER INTERACTIVITY WITH FAIRNESS METER
-   ========================================================================== */
 function initTradeAnalyzerPage() {
     const analyzeBtn = document.getElementById('analyzeTradeBtn');
     const meterBar = document.getElementById('tradeMeterBar');
@@ -160,7 +152,7 @@ function initTradeAnalyzerPage() {
             const teamBVal = parseFloat(document.getElementById('teamBVal').value) || 0;
 
             if (teamAVal <= 0 || teamBVal <= 0) {
-                alert("⚠️ Please select valid players for both sides of the trade!");
+                alert("⚠️ Please select active players for both sides of the trade!");
                 return;
             }
 
@@ -168,13 +160,11 @@ function initTradeAnalyzerPage() {
             const ratio = (teamAVal / total) * 100;
             const diff = Math.abs(teamAVal - teamBVal);
 
-            if (meterBar) {
-                meterBar.style.width = `${ratio}%`;
-            }
+            if (meterBar) meterBar.style.width = `${ratio}%`;
 
             let message = '';
             if (diff <= 2.5) {
-                message = "⚖️ PERFECTLY BALANCED TRADE! Fair deal for both Week 6 managers.";
+                message = "⚖️ BALANCED TRADE! Fair deal for both Week 6 managers.";
             } else if (teamAVal > teamBVal) {
                 message = `🔥 TEAM A WINS THE DEAL! Team A gains +${diff.toFixed(1)} Week 6 value edge.`;
             } else {
@@ -186,7 +176,7 @@ function initTradeAnalyzerPage() {
                 resultToast.style.display = 'block';
             }
 
-            alert(`Week 6 Trade Analysis Complete!\n${message}`);
+            alert(`Week 6 Trade Analysis:\n${message}`);
         });
     }
 }
