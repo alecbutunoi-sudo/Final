@@ -1,1 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gridiron Edge - Fantasy Football Rankings</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
+    <!-- Required Consistent Navigation Menu -->
+    <header>
+        <button id="themeToggleBtn" class="theme-btn">☀️ Light Mode</button>
+        <h1>Gridiron Edge Fantasy</h1>
+        <nav>
+            <a href="index.html">📊 Rankings</a>
+            <a href="draft.html">📋 Draft Kit</a>
+            <a href="trade.html">🔄 Trade Analyzer</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Card -->
+        <section class="card">
+            <h2>2026 Consensus Player Rankings</h2>
+            <p>Filter, search, and toggle between PPR and Standard scoring formats to build your ultimate draft list.</p>
+            
+            <img src="https://commishkit.com/wp-content/uploads/2022/08/digitaldraftboard.jpg" alt="Fantasy Football Draft Board" class="hero-img">
+
+            <!-- Interactive Search & Filter Controls -->
+            <div class="controls-row">
+                <input type="text" id="playerSearchInput" placeholder="🔍 Search player or team (e.g., McCaffrey, SF)...">
+                
+                <select id="posFilterSelect">
+                    <option value="ALL">All Positions</option>
+                    <option value="QB">Quarterbacks (QB)</option>
+                    <option value="RB">Running Backs (RB)</option>
+                    <option value="WR">Wide Receivers (WR)</option>
+                    <option value="TE">Tight Ends (TE)</option>
+                </select>
+
+                <button id="pprToggleBtn" class="btn btn-gold">Mode: PPR Scoring</button>
+            </div>
+
+            <!-- Rankings Table -->
+            <table class="rankings-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Player</th>
+                        <th>Position</th>
+                        <th>Team</th>
+                        <th>Proj. PPG</th>
+                    </tr>
+                </thead>
+                <tbody id="playerTableBody">
+                    <!-- JavaScript dynamically inserts rows here -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Informational Card -->
+        <section class="card">
+            <h2>Expert Ranking Criteria</h2>
+            <p>Our fantasy projections are computed using advanced metrics including target share, red-zone touches, and line strength.</p>
+
+            <ul class="styled-list">
+                <li><strong>Target Volume:</strong> Wide receivers receiving 8+ targets per game rank highest.</li>
+                <li><strong>Workhorse RBs:</strong> Running backs securing both rushing attempts and goal-line work.</li>
+                <li><strong>Konami Code QBs:</strong> Quarterbacks with rushing touchdown upside.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 Gridiron Edge Fantasy Network. Built with HTML5, CSS3, & JavaScript.
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
