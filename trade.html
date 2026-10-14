@@ -1,1 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gridiron Edge - Trade Analyzer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
+    <!-- Required Consistent Navigation Menu -->
+    <header>
+        <button id="themeToggleBtn" class="theme-btn">☀️ Light Mode</button>
+        <h1>Gridiron Edge Fantasy</h1>
+        <nav>
+            <a href="index.html">📊 Rankings</a>
+            <a href="draft.html">📋 Draft Kit</a>
+            <a href="trade.html">🔄 Trade Analyzer</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Trade Calculator Card -->
+        <section class="card" id="tradeForm">
+            <h2>Interactive Fantasy Trade Calculator</h2>
+            <p>Evaluate proposed trades instantly before sending or accepting offers in your league.</p>
+
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Touchdown_--_Texas_High_School_vs_Highland_Park_High_School_first-round_playoffs.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original" alt="American Football Action" class="hero-img">
+
+            <div class="trade-grid">
+                <!-- Team A Selection -->
+                <div class="trade-team-box">
+                    <h3>🏈 Team A Gives:</h3>
+                    <select id="teamAVal" style="width: 100%; margin-top: 8px;">
+                        <option value="22.4">Christian McCaffrey (Val: 22.4)</option>
+                        <option value="21.8">CeeDee Lamb (Val: 21.8)</option>
+                        <option value="19.5">Breece Hall (Val: 19.5)</option>
+                        <option value="16.4">Travis Kelce (Val: 16.4)</option>
+                        <option value="14.8">Sam LaPorta (Val: 14.8)</option>
+                    </select>
+                </div>
+
+                <!-- Team B Selection -->
+                <div class="trade-team-box">
+                    <h3>🏈 Team B Gives:</h3>
+                    <select id="teamBVal" style="width: 100%; margin-top: 8px;">
+                        <option value="21.2">Tyreek Hill (Val: 21.2)</option>
+                        <option value="19.1">Ja'Marr Chase (Val: 19.1)</option>
+                        <option value="18.7">Bijan Robinson (Val: 18.7)</option>
+                        <option value="24.2">Josh Allen (Val: 24.2)</option>
+                        <option value="11.2">Bench Depth Package (Val: 11.2)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Dynamic Fairness Meter -->
+            <label style="font-weight: bold; color: var(--text-light);">Trade Balance Ratio:</label>
+            <div class="meter-container">
+                <div id="tradeMeterBar" class="meter-bar" style="width: 50%;"></div>
+            </div>
+
+            <div style="text-align: center; margin-top: 15px;">
+                <button id="analyzeTradeBtn" class="btn btn-gold" style="font-size: 1.1rem; padding: 12px 30px;">⚡ Analyze Trade Fairness</button>
+            </div>
+
+            <!-- Dynamic Results Banner -->
+            <div id="tradeResultToast" style="display: none; background-color: var(--bg-element); color: var(--accent-gold); padding: 15px; border-radius: 8px; margin-top: 15px; text-align: center; font-weight: bold; border: 1px solid var(--accent-gold);">
+            </div>
+        </section>
+
+        <!-- Golden Rules of Trading Card -->
+        <section class="card">
+            <h2>The 3 Golden Rules of Fantasy Trading</h2>
+            <p>Maximize value without hurting your starter lineup structure.</p>
+
+            <ul class="styled-list">
+                <li><strong>1. Upgrade Starters:</strong> Trading two bench players for one elite starter is always a win in shallower leagues.</li>
+                <li><strong>2. Target Bye-Week Panic:</strong> Trade for top players when rival managers need immediate wins during bye weeks.</li>
+                <li><strong>3. Sell High on Touchdown Flukes:</strong> Trade away players relying solely on unsustainable touchdown luck.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 Gridiron Edge Fantasy Network. Built with HTML5, CSS3, & JavaScript.
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
